@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora con Bucle</title>
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <p>Abra la consola para interactuar con la calculadora.</p>
+
+    <script>
+        // Paso 1: Declaración de Variables
+        let num1, num2, operacion;
+
+        // Paso 2: Función para realizar operaciones
+        function realizarOperacion(num1, num2, operacion) {
+            num1 = parseFloat(num1);
+            num2 = parseFloat(num2);
+
+            if (operacion === "suma") {
+                return num1 + num2;
+            } else if (operacion === "resta") {
+                return num1 - num2;
+            } else if (operacion === "multiplicacion") {
+                return num1 * num2;
+            } else if (operacion === "division") {
+                if (num2 === 0) {
+                    return "Error: División por cero";
+                }
+                return num1 / num2;
+            } else {
+                return "Error: Operación no reconocida";
+            }
+        }
+
+        // Paso 4: Bucle para realizar múltiples operaciones
+        while (true) {
+            // Pedimos los datos al usuario
+            num1 = prompt("Ingrese el primer número (o escriba 'salir' para terminar):");
+            if (num1.toLowerCase() === "salir") {
+                alert("Gracias por usar la calculadora. ¡Adiós!");
+                break;
+            }
+
+            num2 = prompt("Ingrese el segundo número:");
+            operacion = prompt("Ingrese la operación a realizar (suma, resta, multiplicacion, division):");
+
+            // Validación de entrada
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Error: Por favor, ingrese números válidos.");
+                continue;
+            }
+
+            // Realizamos la operación
+            let resultado = realizarOperacion(num1, num2, operacion);
+
+            // Mostramos el resultado
+            alert("El resultado de la operación es: " + resultado);
+        }
+    </script>
+</body>
+</html>
